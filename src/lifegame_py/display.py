@@ -54,4 +54,4 @@ def print_board(board: List[List[int]], title: str = None):
     # Count cells
     count1 = sum(cell == protocol.PLAYER1 for row in board for cell in row)
     count2 = sum(cell == protocol.PLAYER2 for row in board for cell in row)
-    print(f"Player 1: {count1} cells, Player 2: {count2} cells")
+    # print(f"Player 1: {count1} cells, Player 2: {count2} cells")

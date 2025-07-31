@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from lifegame_py import LifePlayer, play_game, protocol, print_board
 import logging
+import time
 
 def clear_screen():
     """Clear the screen"""
@@ -66,8 +67,10 @@ class ManualPlayer(LifePlayer):
                     print(f"Current turn: You (Player {self.player_id})")
                 else:
                     print(f"Current turn: Opponent")
+                time.sleep(2)
             
             elif self.last_msg.get("phase") == protocol.phase_life_result:
+                time.sleep(3)
                 clear_screen()
                 # After simulation
                 print("\n" + "="*50)
@@ -75,7 +78,7 @@ class ManualPlayer(LifePlayer):
                 print("SIMULATION COMPLETE!")
                 print_board(self.last_msg["board"], "Final board state")
                 count = self.last_msg.get("count", {})
-                print(f"\nFinal scores:")
+                print(f"Final scores:")
                 print(f"Player 1: {count.get('1', 0)} cells")
                 print(f"Player 2: {count.get('2', 0)} cells")
 

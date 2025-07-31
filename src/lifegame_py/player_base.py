@@ -66,7 +66,6 @@ def play_game(host: str, port: int, player: LifePlayer):
             while True:
                 # Receive game status
                 game_status = sockfile.readline().rstrip()
-                print(f'{game_status}')
                 
                 if game_status == protocol.placement:
                     # Placement phase - player's turn
@@ -80,7 +79,7 @@ def play_game(host: str, port: int, player: LifePlayer):
                     pass
                 elif game_status == protocol.simulation:
                     # Simulation phase started
-                    print("Simulation phase started")
+                    print("Simulation phase started...")
                 elif game_status == protocol.you_win:
                     print("You win!")
                     break
