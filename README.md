@@ -15,6 +15,13 @@
 - [/src/lifegame_py](/src/lifegame_py) ライフゲームライブラリ
 - [/sample](/sample) サーバーとプレイヤーのサンプル
 
+## ライブラリのインストール
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -e .
+```
+
 ## 実行
 - ゲームを起動する。（サーバーの起動、クライアントの接続、ゲームの開始）
 ```
