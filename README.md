@@ -16,18 +16,27 @@
 - [/sample_life](/sample_life) サーバーとプレイヤーのサンプル
 
 ## 実行
-ライフゲームサーバを起動する。
+- ゲームを起動する。（サーバーの起動、クライアントの接続、ゲームの開始）
 ```
-$ python3 sample_life/server.py localhost 2001
+$ make run
 ```
-クライアントを2つ接続する。
+※ サーバーとPlayer1（P1）の接続はバックグラウンドで行われる。
+
+- Player1（P1）を指定して、ゲームを起動する。（Player2はmanual_playerで固定）
 ```
-$ python3 sample_life/random_player.py localhost 2001
-$ python3 sample_life/manual_player.py localhost 2001
+$ make run P1=[プレイヤー名]
+```
+※ デフォルトはrandom_playerである。
+
+- ゲームを停止する。
+```
+$ make stop
 ```
 
 人間プレイ用の[manual_player.py](/sample_life/manual_player.py)では、盤面が表示され配置位置を入力できる。
 ```
+--- Game Phase: Placement ---
+
 Current board (You are Player 1)
 +---+---+---+---+---+---+---+
 |   | 0 | 1 | 2 | 3 | 4 | 5 |

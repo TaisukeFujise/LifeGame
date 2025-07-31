@@ -77,21 +77,21 @@ S → 両者: "draw" (同数の場合)
 
 ## 実行方法
 
-### サーバー起動
+### ゲームを起動する。（サーバーの起動、クライアントの接続、ゲームの開始）
 ```bash
-python3 sample_life/server.py localhost 2000
+make run
 ```
+※ サーバーとPlayer1（P1）の接続はバックグラウンドで行われる。
 
-### クライアント接続
-
-ランダムプレイヤー:
+### Player（P1）を指定して、ゲームを起動する。（Player2はmanual_playerで固定）
 ```bash
-python3 sample_life/random_player.py localhost 2000
+make run P1=[プレイヤー名]
 ```
+※ デフォルトはrandom_playerである。
 
-マニュアルプレイヤー:
+### ゲームを停止する。
 ```bash
-python3 sample_life/manual_player.py localhost 2000
+make stop
 ```
 
 ## 実装の詳細
@@ -124,6 +124,8 @@ for y,x in 全セル:
 
 ### 配置フェーズの表示（manual_player）
 ```
+--- Game Phase: Placement ---
+
 Current board (You are Player 1)
 +---+---+---+---+---+---+---+
 |   | 0 | 1 | 2 | 3 | 4 | 5 |
@@ -145,6 +147,8 @@ Player 1: 1 cells, Player 2: 1 cells
 
 ### 最終結果の表示
 ```
+--- Game Phase: Simulation Result ---
+
 SIMULATION COMPLETE!
 Final board state
 +---+---+---+---+---+---+---+
