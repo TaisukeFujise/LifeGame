@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lifegame-py"
+version = "0.0.1"
+authors = [
+  {name = "T. Fujise", email="tafujise0224@g.ecc.u-tokyo.ac.jp"},
+]
+
+dependencies = [
+    'tabulate',
+    'pytest',
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
