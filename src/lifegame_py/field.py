@@ -63,8 +63,10 @@ class LifeField:
                         player2_count = neighbors.count(protocol.PLAYER2)
                         if player1_count > player2_count:
                             new_cells[y][x] = protocol.PLAYER1
-                        else:
+                        elif player1_count < player2_count:
                             new_cells[y][x] = protocol.PLAYER2
+                        else:
+                            new_cells[y][x] = protocol.DEAD
         
         self.cells = new_cells
     
@@ -77,4 +79,5 @@ class LifeField:
         return count
     
     def get_board_state(self) -> List[List[int]]:
-        return self.cells
+        import copy
+        return copy.deepcopy(self.cells)

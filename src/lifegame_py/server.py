@@ -5,6 +5,7 @@ import json
 import logging
 import sys
 import time
+from . import display # displayモジュールを追加
 
 
 class LifeClient:
@@ -71,13 +72,14 @@ class LifeGameControl:
     def get_winner(self) -> int:
         count1 = self.field.count(protocol.PLAYER1)
         count2 = self.field.count(protocol.PLAYER2)
-        
+
         if count1 > count2:
-            return 0
+            return 0  # Player1 (先行) の勝利
         elif count2 > count1:
-            return 1
+            return 1  # Player2 (後攻) の勝利
         else:
-            return -1  # Draw
+            # 同数の場合、先行プレイヤー (Player1) の勝利
+            return 0
 
 
 def server_main(host: str, port: int):
@@ -156,6 +158,10 @@ def server_main(host: str, port: int):
                 for client in clients:
                     client.sockfile.write(result_json)
                     client.sockfile.flush()
+                
+                # --- ここから追加 --- 
+                display.print_board(game_control.field.get_board_state(), title="Board after placement")
+                # --- ここまで追加 --- 
                     
             except (json.JSONDecodeError, KeyError, ValueError) as e:
                 logging.error(f'Invalid placement from client {current_client.id}: {e}')
@@ -177,6 +183,8 @@ def server_main(host: str, port: int):
             client.sockfile.write(result_json)
             client.sockfile.flush()
         
+        display.print_board(game_control.field.get_board_state(), title="Board after simulation")
+
         # Determine and announce winner
         winner = game_control.get_winner()
         

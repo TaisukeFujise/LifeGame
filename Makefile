@@ -4,11 +4,12 @@ HOST = localhost
 PORT = 2000
 
 # Player 1 is the opponent (background), connected first.
-P1 ?= random_player
-P1_SCRIPT = sample/$(P1).py
+P1 ?= random
+P1_SCRIPT = sample/$(P1)_player.py
 
 # Player 2 is you (foreground), connected second.
-P2_SCRIPT = sample/manual_player.py
+P2 ?= manual
+P2_SCRIPT = sample/$(P2)_player.py
 
 SERVER_SCRIPT = sample/server.py
 
@@ -20,10 +21,13 @@ all: help
 
 # Start the server and both players
 run:
+	@echo "Stopping any existing game processes..."
+	@pkill -f "python3 sample/" || echo "No existing processes to stop."
+	@sleep 1
 	@echo "Starting server in background..."
 	@$(PYTHON) $(SERVER_SCRIPT) $(HOST) $(PORT) &
 	@echo "Waiting for server to initialize..."
-	@sleep 1
+	@sleep 2
 	@echo "Starting opponent Player 1 ($(P1)) in background..."
 	@$(PYTHON) $(P1_SCRIPT) $(HOST) $(PORT) &
 	@sleep 1

@@ -67,7 +67,7 @@ class ManualPlayer(LifePlayer):
                     print(f"Current turn: You (Player {self.player_id})")
                 else:
                     print(f"Current turn: Opponent")
-                time.sleep(2)
+                # time.sleep(2)
             
             elif self.last_msg.get("phase") == protocol.phase_life_result:
                 time.sleep(3)

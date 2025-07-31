@@ -103,6 +103,6 @@ def play_game(host: str, port: int, player: LifePlayer):
                 
                 # Update player_id if needed
                 if "next_player" in obs_data:
-                    if placement_count == 0:
+                    if placement_count == 1:
                         # First placement determines our player ID
                         player.player_id = obs_data["next_player"]

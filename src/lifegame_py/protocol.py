@@ -14,10 +14,10 @@ draw = "draw"
 phase_placement = "placement"
 phase_life_result = "life_result"
 
-HEIGHT = 6
-WIDTH = 6
-PLACEMENT_TURNS = 6
-SIMULATION_GENERATIONS = 3
+HEIGHT = 8
+WIDTH = 8
+PLACEMENT_TURNS = 8
+SIMULATION_GENERATIONS = 5
 
 DEAD = 0
 PLAYER1 = 1
